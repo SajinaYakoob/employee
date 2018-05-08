@@ -1,0 +1,42 @@
+
+<div class="container">
+	<h2 class = "page-header">ADD EMPLOYEE </h2>
+	<form (ngSubmit) = "addEmployee()">
+		<div class = 'form-group'>
+			<label>First Name</label>
+			<input type = "text" [(ngModel)] = "first_name" name = "first_name" class = "form-control"/>
+		</div>
+		<div class = 'form-group'>
+			<label>Last Name</label>
+			<input type = "text" [(ngModel)] = "last_name" name = "last_name" class = "form-control"/>
+		</div>
+		<div class = 'form-group'>
+			<label>Mobile Number </label>
+			<input type = "text" [(ngModel)] = "mobile_number" name = "mobile_number" class = "form-control"/>
+		</div>
+		<div class = 'form-group'>
+			<input type = "button" class = "btn btn btn-success" value ='Add Employee' (click) = "addEmployee()"/>
+		</div>
+		
+	</form>
+</div>
+<hr>
+<div class="container">
+		<div class="row" *ngFor= "let employee of employees">
+			<div class="col-sm-3 ">
+				{{employee.first_name}}
+			</div>
+			<div class="col-sm-3 ">
+				{{employee.last_name}}
+			</div>
+			<div class="col-sm-3 ">
+				{{employee.mobile_number}}
+			</div>
+			<div class="col-sm-3 ">
+				<input type = 'button' value ='Delete Employee' (click) = 'deleteEmployee(employee._id)' class = "btn btn btn-danger"/>
+				<br>
+				<br>
+			</div>
+			
+		</div>
+</div>

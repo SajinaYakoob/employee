@@ -1,0 +1,45 @@
+<!-- <div class="container"> -->
+	<!-- <h2 class = "page-header">WELCOME</h2> -->
+	<!-- <form> -->
+		<!-- <div class = 'form-group'> -->
+			<!-- <label>User Name</label> -->
+			<!-- <input type = "text" [(ngModel)] = "user_name" name = "user_name" maxlength = "30" class = "form-control"/> -->
+		<!-- </div> -->
+		<!-- <div class = 'form-group'> -->
+			<!-- <label>Password</label> -->
+			<!-- <input type = "password" [(ngModel)] = "password" name = "password" maxlength = "12" class = "form-control"/> -->
+		<!-- </div> -->
+		<!-- <div class = 'form-group'> -->
+			<!-- <input type = "button" class = "btn btn btn-success" value ='Login' (click) = "onLoginSubmit()"/> -->
+		<!-- </div> -->
+		
+	<!-- </form> -->
+<!-- </div> -->
+
+
+
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && onLoginSubmit()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !usernameLogin.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="user_name" #usernameLogin="ngModel" required />
+            <div *ngIf="f.submitted && !usernameLogin.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !passwordLogin.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="password" #passwordLogin="ngModel" required />
+            <div *ngIf="f.submitted && !passwordLogin.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Login</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+		<div class="form-group" *ngIf="showErrormsg">
+            <div>invalid login credentials</div>
+        </div>
+		
+    </form>
+</div>
